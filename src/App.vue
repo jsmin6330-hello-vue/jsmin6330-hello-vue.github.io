@@ -1,23 +1,21 @@
 <script setup>
-import { ref,onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
-//반응형 
-const count = ref(1)
+//reactive state
+const count = ref(0)
 
+//function that mutate state and trigger updates
 function increment(){
-	count.value = count.value + 1
+	count.value++
 }
 
-onMounted(() => {
-	console.log(`The initial count is ${count.value}.`);
-})
+// lifestyle hooks
+onMounted(() => console.log(`The initial count is ${count.value}.`))
 
 </script>
 
 <template>
-	<div>
-	<button @click = "increment"> Count is: {{ count }}</button>
-	</div>
+	<button @click = "increment"> Count is: {{ count > 10 ? "크다" : "작다" }}</button>
 </template>
 
 <style scoped>
