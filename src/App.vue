@@ -1,29 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
-//reactive state
-const count = ref({ 
-	cnt: 0, 
-	name: "misu"
-})
-
-//function that mutate state and trigger updates
-function increment(){
-	count.value.cnt++
-	count.value.name = count.value.name.split('').reverse().join('')
-}
-
-// lifestyle hooks
-onMounted(() => console.log(`The initial count is ${count.value}.`))
+const message = ref('Hello World')
+const message_info = ref({name: "soomin", age: 29})
 
 </script>
 
 <template>
-	<button @click = "increment"> Count is: {{ count.cnt }}, my name is {{ count.name }}</button>
+	<h1>{{ message }}</h1>
+	<h1>{{ message_info }}</h1>
 </template>
-
-<style scoped>
-	button{
-		font-weight: bold;
-	}
-</style>
