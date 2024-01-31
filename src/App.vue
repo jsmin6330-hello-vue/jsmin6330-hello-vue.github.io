@@ -1,12 +1,23 @@
 <script setup>
 import { ref } from 'vue'
+const awesome = ref(true)
 
-const message = ref('Hello World')
-const message_info = ref({name: "soomin", age: 29})
+function toggleAwesome(v){
+	awesome.value = !v
+}
+
+function isAwesome(){
+	return awesome.value
+}
 
 </script>
 
 <template>
-	<h1>{{ message }}</h1>
-	<h1>{{ message_info }}</h1>
+	<button @click = "toggleAwesome(awesome)">toggle</button>
+
+	<h1 v-if="isAwesome()">Vue is awesome!</h1>
+	<h1 v-else>Oh no 🥲</h1>
+
+	<h4 v-if="isAwesome()">True</h4>
+	<h4 v-show="isAwesome()">True</h4>
 </template>
