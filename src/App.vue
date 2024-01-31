@@ -1,15 +1,28 @@
 <script setup>
 import { ref } from 'vue'
-import category from "@/assets/category.json"
+import amibodata from "@/assets/amiibo.json"
 
-//const parentMessage = ref('Parent')
-//const items = ref([{message: 'Foo'},{message:'Bar'}])
-const categories = ref(category)
+const amibolist = ref(amibodata)
 
 </script>
 
 <template>
-        <li v-for = "(item) in categories">
-		 {{ item.name }} - {{ item.code }}
-        </li>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>이름(영문)</th>
+          <th>이름(한국어)</th>
+          <th>주로 하는 생각</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(amiibo, index) in amibolist" :key="index">
+          <td>{{ amiibo.name }}</td>
+          <td>{{ amiibo.translations.kRko }}</td>
+          <td>{{ amiibo.thoughtBubble }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
