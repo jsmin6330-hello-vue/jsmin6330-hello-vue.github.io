@@ -9,8 +9,8 @@ const todos = ref([
 	{ id: id++, issue: 'Going Hawaii'}
 ])
 
-function addTodo(e){
-	e.preventDefault();
+function addTodo(/*e*/){
+	//e.preventDefault();
 	todos.value.push({id: id++, issue: newTodo.value})	
 }
 
@@ -24,7 +24,7 @@ function removeTodo(todo){
 </script>
 
 <template>
-	<form @submit ="addTodo">
+	<form @submit.prevent ="addTodo">
 		<input v-model = "newTodo">
 		<button>할 일 추가</button>
 	</form>
