@@ -1,34 +1,20 @@
 <script setup>
-import { ref } from 'vue'
-import amibodata from "@/assets/amiibo.json"
+import {reactive, computed, ref} from 'vue'
 
-const amibolist = ref(amibodata)
+const author = ref({
+        name: 'John Doe',
+        books: [1, 2, 3]
+})
 
-function keyword(name){
-	return name.includes('z');
-}
+const check = computed(() => 
+{return  author.value.books.length > 2 ? 'Yes' : 'No'})
 
 </script>
 
 <template>
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>이름(영문)</th>
-          <th>이름(한국어)</th>
-          <th>주로 하는 생각</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(amiibo) in amibolist">
-          <template v-if="keyword(amiibo.name)">
-	  <td>{{ amiibo.name }}</td>
-          <td>{{ amiibo.translations.kRko }}</td>
-          <td>{{ amiibo.thoughtBubble }}</td>
-	</template>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+	<span> 👻: </span>
+	<span> {{ author.books.length > 2 ? 'Yes' : 'No' }} </span>
+	<div> computed ⬇️ </div>
+	<div> {{ check }} </div>
+	
 </template>
