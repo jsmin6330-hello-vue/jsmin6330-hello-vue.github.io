@@ -1,22 +1,39 @@
 <script setup>
-import { ref, onUpdated, onMounted, onBeforeUpdate } from 'vue'
+import { ref } from 'vue'
 
-const count = ref(0)
+let id = 0
 
-onMounted(() => {
-  console.log("onMounted count: ",document.getElementById('count').textContent)
-})
+const newTodo = ref('')
+const todos = ref([
+	{ id: id++, issue: 'Backlog' } , { id: id++, issue: 'Todo'},
+	{ id: id++, issue: 'Going Hawaii'}
+])
 
-onBeforeUpdate(() => {
-  console.log("onBeforeUpdate: count: ",document.getElementById('count').textContent)
-})
+function addTodo(e){
+	e.preventDefault();
+	todos.value.push({id: id++, issue: newTodo.value})	
+}
 
-onUpdated(() => { 
-	console.log(document.getElementById('count').textContent)})
+
+function removeTodo(todo){
+	todos.value.splice(todo.index, 1)
+	//todos remove ...[].filter(t/f)
+	//todos.value = todos.value.filter((t) => t !== ?)
+}
 
 </script>
 
 <template>
-        <button id = "count" @click = "count++"> {{ count }} </button>
+	<form @submit ="addTodo">
+		<input v-model = "newTodo">
+		<button>할 일 추가</button>
+	</form>
+	<ul>
+		<li v-for = "todo in todos">
+			{{ todo.issue }} - <button @click = "removeTodo(todo)" > Done </button>	
+		</li>
+	</ul>
 </template>
+
+
 
