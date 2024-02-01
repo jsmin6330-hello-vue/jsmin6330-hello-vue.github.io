@@ -4,11 +4,11 @@ import { ref, onUpdated, onMounted, onBeforeUpdate } from 'vue'
 const count = ref(0)
 
 onMounted(() => {
-  console.log("Component mounted")
+  console.log("onMounted count: ",document.getElementById('count').textContent)
 })
 
 onBeforeUpdate(() => {
-  console.log("Component is about to update")
+  console.log("onBeforeUpdate: count: ",document.getElementById('count').textContent)
 })
 
 onUpdated(() => { 
