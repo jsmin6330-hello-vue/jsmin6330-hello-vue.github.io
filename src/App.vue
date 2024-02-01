@@ -1,34 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import amibodata from "@/assets/amiibo.json"
+import {reactive, computed, ref} from 'vue'
 
-const amibolist = ref(amibodata)
-
-function keyword(name){
-	return name.includes('z');
-}
-
+const author = ref({
+	name: 'John Doe',
+	books: [1, 2, 3]
+})
 </script>
 
 <template>
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>이름(영문)</th>
-          <th>이름(한국어)</th>
-          <th>주로 하는 생각</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(amiibo) in amibolist">
-          <template v-if="keyword(amiibo.name)">
-	  <td>{{ amiibo.name }}</td>
-          <td>{{ amiibo.translations.kRko }}</td>
-          <td>{{ amiibo.thoughtBubble }}</td>
-	</template>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+	<p>Has published books:</p>
+	<span>{{ author.books.length > 2? 'Yes' : 'No' }} </span>
 </template>
