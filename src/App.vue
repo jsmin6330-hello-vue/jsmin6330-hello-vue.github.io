@@ -13,16 +13,17 @@ async function fetchData(){
 }
 
 fetchData()
-function todoIdPuls(){
+/*function todoIdPuls(){
 	todoId.value++;
 	fetchData()
-}
+}*/
+watch(todoId, fetchData)
 
 </script>
 
 <template>
 	<p>Todo id: {{ todoId }} </p>
-	<button @click="todoIdPuls()" :disabled="!todoData">Fetch next todo</button>
-	<p v-if="!todoData">Loading...</p>
+	<button @click="todoId++" :disabled="!todoData">Fetch next todo</button>
+	<p v-if="!todoData">Loading....</p>
 	<pre v-else> {{ todoData }} </pre>
 </template>
