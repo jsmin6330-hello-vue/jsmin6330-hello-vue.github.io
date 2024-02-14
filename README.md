@@ -35,5 +35,17 @@ npm run build
 |------|---|---|---|
 |DEV|Branch of PR|manual firebase cmd|[jsmin6330hellovue-gitbolgdev.web.app](https://jsmin6330hellovue-gitbolgdev.web.app/)|
 |PRD|main|Auto Github Action|[jsmin6330-hello-vue.github.io](https://jsmin6330-hello-vue.github.io/)|
+|fly.io| | jsmin6330-hello-vue-github-io.fly.dev|https://jsmin6330-hello-vue-github-io.fly.dev/|
 
 
+### How to Deploy fly.io
+```
+# docker 컨테이너 생성, 이미지 생성, commit, push
+sudo docker run --name nginx-gitvlog -p 9055:80 -d nginx
+sudo docker cp /home/jsmin630/code/jsmin6330-hello-vue.github.io/. nginx-gitvlog:/usr/share/nginx/html
+sudo docker commit nginx-gitvlog soominjeong/nginx-gitvlog:0.1.0
+sudo docker push soominjeong/nginx-gitvlog:0.1.0
+
+# fly.io
+flyctl deploy
+```
