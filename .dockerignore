@@ -1,0 +1,6 @@
+Dockerfile
+README.md
+firebase.json
+fly.toml
+.firebase
+.firebaserc
