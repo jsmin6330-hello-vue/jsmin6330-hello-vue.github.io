@@ -7,7 +7,7 @@ app = 'jsmin6330-hello-vue-github-io'
 primary_region = 'nrt'
 
 [build]
-  image = "soominjeong/nginx-gitvlog:0.1.0"
+  # image = "soominjeong/nginx-gitvlog:0.1.0"
 
 [http_service]
   internal_port = 80
